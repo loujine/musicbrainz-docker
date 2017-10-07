@@ -34,6 +34,7 @@ WORKDIR /home/$NB_USER/
 RUN mkdir -p notebooks js
 RUN ipython3 profile create
 COPY helper.py .ipython/profile_default/startup/helper.py
+COPY plotly_env.py .ipython/profile_default/startup/plotly_env.py
 RUN wget https://bitbucket.org/loujine/musicbrainz-dataviz/get/master.tar.bz2 \
  && tar xfj /home/$NB_USER/master.tar.bz2
 RUN mv loujine-musicbrainz-dataviz-* dataviz-examples
