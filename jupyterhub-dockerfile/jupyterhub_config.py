@@ -15,4 +15,4 @@ c.JupyterHub.spawner_class = 'jupyterhub.spawner.LocalProcessSpawner'
 c.Spawner.ip = '127.0.0.1'
 
 #  Defaults to an empty set, in which case no user has admin access.
-c.Authenticator.admin_users = set(['loujine'])
+c.Authenticator.admin_users = set(['musicbrainz'])

@@ -66,7 +66,7 @@ RUN rm -rf ~/.cache ~/.npm
 RUN mkdir -p /srv/jupyterhub/
 COPY jupyterhub_config.py /srv/jupyterhub/jupyterhub_config.py
 
-ENV NB_USER loujine
+ENV NB_USER musicbrainz
 RUN useradd -g 100 -m -p $(openssl passwd -1 $NB_USER) -s /bin/bash $NB_USER
 
 USER $NB_USER

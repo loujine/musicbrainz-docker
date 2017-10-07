@@ -72,4 +72,4 @@ services:
     depends_on:
       - db
     volumes:
-     - $PWD/notebooks:/home/loujine/notebooks
+     - ./notebooks:/home/musicbrainz/notebooks
