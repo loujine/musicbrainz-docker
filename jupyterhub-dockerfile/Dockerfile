@@ -72,6 +72,7 @@ RUN useradd -g 100 -m -p $(openssl passwd -1 $NB_USER) -s /bin/bash $NB_USER
 USER $NB_USER
 WORKDIR /home/$NB_USER/
 RUN ipython3 profile create
+COPY helpers.py .ipython/profile_default/startup/helpers.py
 
 USER root
 WORKDIR /srv/jupyterhub/
