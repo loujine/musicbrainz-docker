@@ -40,6 +40,13 @@ RUN apt install -y --no-install-recommends nodejs npm
 RUN pip install version_information
 RUN pip3 install version_information
 
+# Install essentia
+RUN apt install -y --no-install-recommends build-essential libyaml-dev libfftw3-dev libavcodec-dev libavformat-dev libavutil-dev libavresample-dev python-dev libsamplerate0-dev libtag1-dev
+WORKDIR /src/
+RUN wget https://github.com/MTG/essentia/archive/v2.1_beta4.tar.gz && tar xfz v2.1_beta4.tar.gz
+WORKDIR /src/essentia-2.1_beta4
+RUN ./waf configure --with-python --prefix=/usr && ./waf && ./waf install
+
 # lastest plotly
 RUN pip install plotly --upgrade
 RUN pip3 install plotly --upgrade
