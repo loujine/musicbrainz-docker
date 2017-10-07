@@ -13,6 +13,14 @@ RUN /usr/sbin/update-locale LANG=C.UTF-8
 RUN locale-gen C.UTF-8
 ENV LANG C.UTF-8
 
+RUN apt-get -y update
+# Python2.7
+RUN apt install -y --no-install-recommends python-notebook
+RUN apt install -y --no-install-recommends python2.7
+RUN apt install -y --no-install-recommends python-pip python-setuptools python-wheel
+RUN apt install -y --no-install-recommends python-sqlalchemy python-psycopg2 python-jinja2 python-requests python-lxml python-html5lib python-bs4
+RUN apt install -y --no-install-recommends python-pandas python-matplotlib
+
 # Python3.5
 RUN apt install -y --no-install-recommends python3-notebook
 RUN apt install -y --no-install-recommends python3.5
@@ -29,9 +37,11 @@ RUN apt-get -y update
 RUN apt install -y --no-install-recommends nodejs npm
 
 # Notebook widgets
+RUN pip install version_information
 RUN pip3 install version_information
 
 # lastest plotly
+RUN pip install plotly --upgrade
 RUN pip3 install plotly --upgrade
 
 # Install latest jupyterhub
