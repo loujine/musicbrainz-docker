@@ -55,6 +55,10 @@ RUN pip3 install plotly --upgrade
 RUN pip3 install -U jupyterhub
 RUN npm install -g configurable-http-proxy
 
+# Install Python 3.6
+RUN apt install -y --no-install-recommends python3.6
+RUN python3.6 -m ipykernel install --name py3.6 --display-name "Python 3.6"
+
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/*
 RUN rm -rf ~/.cache ~/.npm
