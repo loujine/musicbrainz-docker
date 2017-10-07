@@ -18,9 +18,13 @@ services:
       - pgdata:/var/lib/postgresql/data
     expose:
       - "5432"
+    ports:
+      - "5432:5432"
 
   musicbrainz:
     build: musicbrainz-dockerfile
+    expose:
+      - "5000"
     ports:
       - "5000:5000"
     volumes:
@@ -55,3 +59,17 @@ services:
     restart: unless-stopped
     expose:
       - "6379"
+
+  jupyterhub:
+    build: jupyterhub-dockerfile
+    restart: always
+    expose:
+      - "8000"
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./postgres-dockerfile/postgres.env
+    depends_on:
+      - db
+    volumes:
+     - $PWD/notebooks:/home/loujine/notebooks
